@@ -19,8 +19,8 @@ Avo.configure do |config|
   end
   include ActionController::HttpAuthentication::Basic
   config.authenticate_with do
-    username = ENV['EM_USERNAME'] || 'username'
-    password = ENV['EM_PASSWORD'] || 'password'
+    username = ENV['BP_USERNAME'] || 'username'
+    password = ENV['BP_PASSWORD'] || 'password'
     http_basic_authenticate_or_request_with name: username, password: password
   end
 
