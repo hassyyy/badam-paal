@@ -9,10 +9,7 @@ class VendorResource < Avo::BaseResource
   field :address, as: :trix, required: true
   field :contact, as: :number, required: true
   field :balance, as: :number, format_using: -> (value) { value > 0 ? "🌲#{value}" : "🔻#{value}" } do |model, resource, view|
-    sales = model.sales.sum do |sale|
-      price = (Cost.where(product_id: sale.product_id, vendor_id: sale.vendor_id).first&.amount).to_i
-      sale.quantity * price
-    end
+    sales = model.sales.sum(:amount)
     payments = model.payments.sum(:amount)
     sales - payments
   end
