@@ -1,13 +1,23 @@
-<div class="flex-1 flex p-4">
-  <div class="place-self-end">
-    <% from = DateTime.current.prev_month.beginning_of_month %>
-    <% to = DateTime.current.prev_month.end_of_month %>
-    <% Vendor.all.each do |vendor| %>
-      <b> <%= vendor.name %> </b> </br>
-      <% sales = vendor.sales.where(date: from..to) %>
-      Sold(Quantity): <%= sales.sum(:quantity) %> </br>
-      Sold(Amount): <%= sales.sum(:amount) %> </br>
-      Paid: <%= vendor.payments.where(date: from..to).sum(:amount) %> </br>
-    <% end %>
-  </div>
-</div>
+<h4 style='align-self: center; font-weight: bold'> Last Month </h4>
+<% from = DateTime.current.prev_month.beginning_of_month %>
+<% to = DateTime.current.prev_month.end_of_month %>
+<table>
+  <tr>
+    <th> Vendor </th>
+    <th> Qty </th>
+    <th> Sold </th>
+    <th> Paid </th>
+    <th> Balance </th>
+  </tr>
+  <% Vendor.all.each do |vendor| %>
+    <% sales = vendor.sales.where(date: from..to) %>
+    <% payments = vendor.payments.where(date: from..to) %>
+    <tr>
+      <th style='font-weight: normal'> <%= vendor.name %> </b> </th>
+      <th style='font-weight: normal'> <%= sales.sum(:quantity) %> </th>
+      <th style='font-weight: normal'> ₹<%= sales.sum(:amount) %> </th>
+      <th style='font-weight: normal'> ₹<%= payments.sum(:amount) %> </th>
+      <th style='font-weight: normal'> ₹<%= sales.sum(:amount) - payments.sum(:amount) %> </th>
+    </tr>
+  <% end %>
+</table>
