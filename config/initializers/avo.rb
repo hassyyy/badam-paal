@@ -59,16 +59,14 @@ Avo.configure do |config|
 
   config.main_menu = -> {
     dashboard :home_dashboard
-    section "Banking", icon: "heroicons/solid/currency-rupee" do
-      resource :balance
-      resource :expense
-      resource :transaction
-      resource :credit_card
-      resource :saving
-      resource :loan
+    section "Transactions", icon: "heroicons/outline/currency-rupee" do
+      resource :sales
+      resource :payments
     end
-    section "Others", icon: "heroicons/solid/view-grid" do
-      resource :trip
+    section "Inventory", icon: "heroicons/outline/clipboard-list" do
+      resource :products
+      resource :vendors
+      resource :costs
     end
   }
 
