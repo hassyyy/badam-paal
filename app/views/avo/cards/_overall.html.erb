@@ -1,0 +1,16 @@
+<div class="flex-1 flex p-4">
+  <div class="place-self-end">
+    <% from = Time.at(0) %>
+    <% to = DateTime.current.end_of_month %>
+    <% Vendor.all.each do |vendor| %>
+      <b> <%= vendor.name %> </b> </br>
+      <% sales = vendor.sales.where(date: from..to) %>
+      Sold(Quantity): <%= sales.sum(:quantity) %> </br>
+      <% sold_amount = sales.sum do |sale| %>
+        <% sale.quantity * (Cost.where(product_id: sale.product_id, vendor_id: sale.vendor_id).first&.amount).to_i %>
+      <% end %>
+      Sold(Amount): <%= sold_amount %> </br>
+      Paid: <%= vendor.payments.where(date: from..to).sum(:amount) %> </br>
+    <% end %>
+  </div>
+</div>
