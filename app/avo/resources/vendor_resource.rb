@@ -7,7 +7,7 @@ class VendorResource < Avo::BaseResource
 
   field :name, as: :text, link_to_resource: true, required: true
   field :address, as: :trix, required: true
-  field :contact, as: :number, required: true
+  field :contact, as: :number, required: true, hide_on: [:index]
   field :balance, as: :number, format_using: -> (value) { value > 0 ? "🌲#{value}" : "🔻#{value}" } do |model, resource, view|
     sales = model.sales.sum(:amount)
     payments = model.payments.sum(:amount)
