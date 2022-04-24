@@ -12,12 +12,13 @@
   <% Vendor.all.each do |vendor| %>
     <% sales = vendor.sales.where(date: from..to) %>
     <% payments = vendor.payments.where(date: from..to) %>
+    <% balance = sales.sum(:amount) - payments.sum(:amount) %>
     <tr class='data'>
       <th> <a href="<%= resources_vendor_path(vendor) %>" target="_top"><%= vendor.name %></a> </th>
       <th> <%= sales.sum(:quantity) %> </th>
       <th> ₹<%= sales.sum(:amount) %> </th>
       <th> ₹<%= payments.sum(:amount) %> </th>
-      <th> ₹<%= sales.sum(:amount) - payments.sum(:amount) %> </th>
+      <th> <%= (balance > 0 && "🟢") || (balance < 0 && "🔴") || "" %>₹<%= balance %> </th>
     </tr>
   <% end %>
 </table>
