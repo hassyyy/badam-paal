@@ -18,7 +18,6 @@
       <th> <%= sales.sum(:quantity) %> </th>
       <th> ₹<%= sales.sum(:amount) %> </th>
       <th> ₹<%= payments.sum(:amount) %> </th>
-      <th> ₹<%= sales.sum(:amount) - payments.sum(:amount) %> </th>
       <th> <%= (balance > 0 && "🟢") || (balance < 0 && "🔴") || "" %>₹<%= balance %> </th>
     </tr>
   <% end %>
