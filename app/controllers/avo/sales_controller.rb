@@ -7,6 +7,15 @@ class Avo::SalesController < Avo::ResourcesController
     redirect_to "/avo/resources/sales"
   end
 
+  def update
+    @sale = Sale.find(params[:id])
+    @sale.assign_attributes(sale_params)
+    @sale.amount = @sale.quantity * (Cost.where(product_id: @sale.product_id, vendor_id: @sale.vendor_id).first&.amount).to_i
+    @sale.save
+
+    redirect_to "/avo/resources/sales"
+  end
+
   private
 
   def sale_params
