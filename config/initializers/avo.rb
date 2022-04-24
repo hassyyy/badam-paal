@@ -15,7 +15,7 @@ Avo.configure do |config|
   ## == Authentication ==
   config.current_user_method do
     AvoUser = Struct.new(:name)
-    AvoUser.new("Hassyyy's Expense Manager")
+    AvoUser.new("Muthi's Paal Manager")
   end
   include ActionController::HttpAuthentication::Basic
   config.authenticate_with do
@@ -39,7 +39,7 @@ Avo.configure do |config|
   # config.locale = 'en-US'
 
   ## == Customization ==
-  # config.app_name = 'Avocadelicious'
+  config.app_name = 'PaalVandi'
   # config.avo_title = 'Hassyyy'
   config.timezone = 'IST'
   # config.currency = 'USD'
@@ -72,7 +72,7 @@ Avo.configure do |config|
 
 
   # Where should the user be redirected when he hits the `/avo` url
-  config.home_path = '/avo/dashboards/home_dashboard'
+  config.home_path = '/avo/resources/vendors'
 
   ## == Breadcrumbs ==
   # config.display_breadcrumbs = true
