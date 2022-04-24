@@ -15,7 +15,7 @@ Avo.configure do |config|
   ## == Authentication ==
   config.current_user_method do
     AvoUser = Struct.new(:name)
-    AvoUser.new("Muthi's Paal Manager")
+    AvoUser.new("Muthamil Selvan K")
   end
   include ActionController::HttpAuthentication::Basic
   config.authenticate_with do
@@ -51,7 +51,7 @@ Avo.configure do |config|
   # config.id_links_to_resource = false
   # config.full_width_container = false
   # config.full_width_index_view = false
-  # config.cache_resources_on_index_view = true
+  config.cache_resources_on_index_view = false
   # config.search_debounce = 300
   # config.view_component_path = "app/components"
   # config.display_license_request_timeout_error = true
