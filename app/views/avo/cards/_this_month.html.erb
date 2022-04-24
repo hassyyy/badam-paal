@@ -13,7 +13,7 @@
     <% sales = vendor.sales.where(date: from..to) %>
     <% payments = vendor.payments.where(date: from..to) %>
     <tr>
-      <th style='font-weight: normal'> <%= vendor.name %> </b> </th>
+      <th style='font-weight: normal'> <a href="<%= resources_vendor_path(vendor) %>" target="_top"><%= vendor.name %></a> </th>
       <th style='font-weight: normal'> <%= sales.sum(:quantity) %> </th>
       <th style='font-weight: normal'> ₹<%= sales.sum(:amount) %> </th>
       <th style='font-weight: normal'> ₹<%= payments.sum(:amount) %> </th>
