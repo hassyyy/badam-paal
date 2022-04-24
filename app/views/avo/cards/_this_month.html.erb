@@ -1,4 +1,4 @@
-<h4 style="align-self: center; font-weight: bold"> This month </h4>
+<h4> This month </h4>
 <% from = DateTime.current.beginning_of_month %>
 <% to = DateTime.current.end_of_month %>
 <table>
@@ -12,12 +12,12 @@
   <% Vendor.all.each do |vendor| %>
     <% sales = vendor.sales.where(date: from..to) %>
     <% payments = vendor.payments.where(date: from..to) %>
-    <tr>
-      <th style='font-weight: normal'> <a href="<%= resources_vendor_path(vendor) %>" target="_top"><%= vendor.name %></a> </th>
-      <th style='font-weight: normal'> <%= sales.sum(:quantity) %> </th>
-      <th style='font-weight: normal'> ₹<%= sales.sum(:amount) %> </th>
-      <th style='font-weight: normal'> ₹<%= payments.sum(:amount) %> </th>
-      <th style='font-weight: normal'> ₹<%= sales.sum(:amount) - payments.sum(:amount) %> </th>
+    <tr class='data'>
+      <th> <a href="<%= resources_vendor_path(vendor) %>" target="_top"><%= vendor.name %></a> </th>
+      <th> <%= sales.sum(:quantity) %> </th>
+      <th> ₹<%= sales.sum(:amount) %> </th>
+      <th> ₹<%= payments.sum(:amount) %> </th>
+      <th> ₹<%= sales.sum(:amount) - payments.sum(:amount) %> </th>
     </tr>
   <% end %>
 </table>
