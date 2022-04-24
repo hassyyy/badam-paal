@@ -39,7 +39,7 @@ Avo.configure do |config|
   # config.locale = 'en-US'
 
   ## == Customization ==
-  config.app_name = 'PaalVandi'
+  config.app_name = 'Badam Milk Supply'
   # config.avo_title = 'Hassyyy'
   config.timezone = 'IST'
   # config.currency = 'USD'
