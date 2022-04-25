@@ -58,7 +58,7 @@ Avo.configure do |config|
   config.buttons_on_form_footers = true
 
   config.main_menu = -> {
-    dashboard :home_dashboard
+    dashboard :dashboard
     section "Transactions", icon: "heroicons/outline/currency-rupee" do
       resource :sales
       resource :payments
@@ -72,7 +72,7 @@ Avo.configure do |config|
 
 
   # Where should the user be redirected when he hits the `/avo` url
-  config.home_path = '/avo/dashboards/home_dashboard'
+  config.home_path = '/avo/resources/vendors'
 
   ## == Breadcrumbs ==
   # config.display_breadcrumbs = true
