@@ -23,7 +23,10 @@ class Avo::SalesController < Avo::ResourcesController
   end
 
   def assign_amount
-    @sale.amount = @sale.quantity * (Cost.where(product_id: @sale.product_id, vendor_id: @sale.vendor_id).first&.amount).to_i
+    return if @sale.quantity.nil? || @sale.product_id.nil? || @sale.vendor_id.nil?
+    cost = Cost.where(product_id: @sale.product_id, vendor_id: @sale.vendor_id).first
+    return if cost.nil?
+    @sale.amount = @sale.quantity * cost.amount
   end
 
 end
