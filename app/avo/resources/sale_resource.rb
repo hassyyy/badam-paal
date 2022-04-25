@@ -7,8 +7,8 @@ class SaleResource < Avo::BaseResource
 
 
   field :date, as: :date, required: true, format: '%B %d, %Y', default: Date.today
-  field :product, as: :belongs_to
-  field :vendor, as: :belongs_to
+  field :product, as: :belongs_to, required: true
+  field :vendor, as: :belongs_to, required: true
   field :quantity, as: :number, required: true
   field :amount, as: :number, hide_on: [:new, :edit]
 
