@@ -25,8 +25,14 @@ class Avo::SalesController < Avo::ResourcesController
   def assign_amount
     return if @sale.quantity.nil? || @sale.product_id.nil? || @sale.vendor_id.nil?
     cost = Cost.where(product_id: @sale.product_id, vendor_id: @sale.vendor_id).first
-    return if cost.nil?
-    @sale.amount = @sale.quantity * cost.amount
+    if cost.nil?
+      product = Product.where(id: @sale.product_id).first
+      return if product.nil?
+      price = product.amount
+    else
+      price = cost.amount
+    end
+    @sale.amount = @sale.quantity * price
   end
 
 end

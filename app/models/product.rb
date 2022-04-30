@@ -5,4 +5,5 @@ class Product < ApplicationRecord
   has_many :sales
 
   validates :name, presence: true
+  validates :amount, presence: true
 end
