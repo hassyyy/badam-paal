@@ -7,7 +7,7 @@ class PaymentResource < Avo::BaseResource
 
   field :date, as: :date, required: true, format: '%B %d, %Y', default: Date.today
   field :vendor, as: :belongs_to, required: true
-  field :amount, as: :number, required: true
+  field :amount, as: :number, required: true, format_using: -> (value) { "₹#{value}" }
 
   filter VendorFilter
 end

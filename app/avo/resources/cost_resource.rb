@@ -7,7 +7,7 @@ class CostResource < Avo::BaseResource
 
   field :product, as: :belongs_to, required: true
   field :vendor, as: :belongs_to, required: true
-  field :amount, as: :number, required: true
+  field :amount, as: :number, required: true, format_using: -> (value) { "₹#{value}" }
 
   filter ProductFilter
   filter VendorFilter
