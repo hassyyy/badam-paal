@@ -6,5 +6,5 @@ class Cost < ApplicationRecord
   validates :product_id, presence: true
   validates :vendor_id, presence: true
   validates :amount, presence: true
-  validates_uniqueness_of :product_id, scope: :vendor_id, message: 'already has a cost for the selected Vendor'
+  validates_uniqueness_of :vendor_id, scope: :product_id, message: 'already has a cost for the selected Product'
 end
