@@ -6,7 +6,7 @@ class SaleResource < Avo::BaseResource
   self.after_update_path = :index
 
 
-  field :date, as: :date, required: true, format: '%B %d, %Y', default: Date.today
+  field :date, as: :date, required: true, picker_format: 'd F, Y', format: '%d %B, %Y', default: Date.today
   field :product, as: :belongs_to, required: true
   field :vendor, as: :belongs_to, required: true
   field :quantity, as: :number, required: true
