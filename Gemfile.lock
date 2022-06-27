@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:avo-hq/avo.git
+  remote: https://github.com/avo-hq/avo.git
   revision: 6b2ba4181a8a3942a5f906a212696eed4ca3883f
   branch: main
   specs:
