@@ -70,9 +70,36 @@ Avo.configure do |config|
     end
   }
 
-
   # Where should the user be redirected when he hits the `/avo` url
   config.home_path = '/avo/resources/vendors'
+
+  # # https://tailwindcss.com/docs/customizing-colors - Amber
+  # config.branding = {
+  #   colors: {
+  #     background: "255 251 235",
+  #     100 => "#fef3c7",
+  #     400 => "#fbbf24",
+  #     500 => "#f59e0b",
+  #     600 => "#d97706"
+  #   },
+  #   logo: "/assets/almond-milk.png",
+  #   logomark: "/assets/almond-milk.png",
+  #   favicon: "/assets/almond-milk.ico"
+  # }
+
+  # https://tailwindcss.com/docs/customizing-colors - Yellow
+  config.branding = {
+    colors: {
+      background: "254 252 232",
+      100 => "#fef9c3",
+      400 => "#facc15",
+      500 => "#eab308",
+      600 => "#ca8a04",
+    },
+    logo: "/assets/almond-milk.png",
+    logomark: "/assets/almond-milk.png",
+    favicon: "/assets/almond-milk.ico"
+  }
 
   ## == Breadcrumbs ==
   # config.display_breadcrumbs = true
